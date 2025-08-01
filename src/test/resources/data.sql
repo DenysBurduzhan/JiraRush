@@ -2,23 +2,19 @@
 TRUNCATE TABLE USER_ROLE;
 TRUNCATE TABLE CONTACT;
 TRUNCATE TABLE PROFILE;
-
 TRUNCATE TABLE ACTIVITY;
-alter
-sequence ACTIVITY_ID_SEQ restart with 1;
 TRUNCATE TABLE TASK;
-alter
-sequence TASK_ID_SEQ restart with 1;
 TRUNCATE TABLE SPRINT;
-alter
-sequence SPRINT_ID_SEQ restart with 1;
 TRUNCATE TABLE PROJECT;
-alter
-sequence PROJECT_ID_SEQ restart with 1;
-
 TRUNCATE TABLE USERS;
-alter
-sequence USERS_ID_SEQ restart with 1;
+
+alter table PROJECT ALTER COLUMN ID restart with 1;
+alter table USERS ALTER COLUMN ID restart with 1;
+alter table ACTIVITY ALTER COLUMN  ID restart with 1;
+alter table TASK ALTER COLUMN ID restart with 1;
+alter table SPRINT ALTER COLUMN ID restart with 1;
+alter table SPRINT ALTER COLUMN ID restart with 1;
+alter table USER_BELONG ALTER COLUMN ID restart with 1;
 
 insert into USERS (EMAIL, PASSWORD, FIRST_NAME, LAST_NAME, DISPLAY_NAME)
 values ('user@gmail.com', '{noop}password', 'userFirstName', 'userLastName', 'userDisplayName'),
@@ -40,7 +36,7 @@ insert into PROFILE (ID, LAST_FAILED_LOGIN, LAST_LOGIN, MAIL_NOTIFICATIONS)
 values (1, null, null, 49),
        (2, null, null, 14);
 
-insert into CONTACT (ID, CODE, VALUE)
+insert into CONTACT (ID, CODE, VAL)
 values (1, 'skype', 'userSkype'),
        (1, 'mobile', '+01234567890'),
        (1, 'website', 'user.com'),
